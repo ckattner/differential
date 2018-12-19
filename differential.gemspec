@@ -23,8 +23,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 2.3.1'
 
-  s.add_development_dependency('guard-rspec')
-  s.add_development_dependency('pry')
-  s.add_development_dependency('rspec')
+  s.add_development_dependency('guard-rspec', '~>4.7.3')
+  s.add_development_dependency('rspec', '~> 3.8.0')
   s.add_development_dependency('rubocop', '~> 0.59.2')
 end
