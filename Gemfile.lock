@@ -79,9 +79,9 @@ PLATFORMS
 
 DEPENDENCIES
   differential!
-  guard-rspec (~> 4.7.3)
-  rspec (~> 3.8.0)
-  rubocop (~> 0.59.2)
+  guard-rspec (~> 4.7)
+  rspec (~> 3.8)
+  rubocop (~> 0.59)
 
 BUNDLED WITH
    1.17.1
