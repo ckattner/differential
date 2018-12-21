@@ -34,7 +34,9 @@ module Differential
       def each(hashes)
         return enum_for(:each) unless block_given?
 
-        hashes.each do |hash|
+        array(hashes).each do |hash|
+          next unless hash
+
           record = read(hash)
           yield record
         end
@@ -67,6 +69,14 @@ module Differential
 
       def group_id_key_array
         @group_id_key_array ||= Array(group_id_key)
+      end
+
+      def array(hashes)
+        if hashes.is_a?(Hash)
+          [hashes]
+        else
+          Array(hashes)
+        end
       end
     end
   end

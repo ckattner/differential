@@ -49,6 +49,37 @@ describe ::Differential::Parser::Reader do
       expect(record.value).to     eq(hash[:minutes])
       expect(record.data).to      eq(hash)
     end
+
+    it 'should skip null records' do
+      reader = ::Differential::Parser::Reader.new(record_id_key:  :name,
+                                                  value_key:      :minutes)
+
+      hashes = [nil]
+
+      records = []
+      reader.each(hashes) do |record|
+        records << record
+      end
+
+      expect(records.length).to eq(0)
+    end
+  end
+
+  it 'should read non-array input' do
+    reader = ::Differential::Parser::Reader.new(record_id_key:  :name,
+                                                value_key:      :minutes)
+
+    hashes = {
+      name: 'Matt',
+      minutes: 34
+    }
+
+    records = []
+    reader.each(hashes) do |record|
+      records << record
+    end
+
+    expect(records.length).to eq(1)
   end
 
   context 'When reading singular keys' do
