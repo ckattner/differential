@@ -82,6 +82,20 @@ describe ::Differential::Parser::Reader do
     expect(records.length).to eq(1)
   end
 
+  it 'should read null input' do
+    reader = ::Differential::Parser::Reader.new(record_id_key:  :name,
+                                                value_key:      :minutes)
+
+    hashes = nil
+
+    records = []
+    reader.each(hashes) do |record|
+      records << record
+    end
+
+    expect(records.length).to eq(0)
+  end
+
   context 'When reading singular keys' do
     it 'should properly create a record from a hash' do
       reader = ::Differential::Parser::Reader.new(record_id_key:  :name,
