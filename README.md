@@ -110,7 +110,7 @@ reader_config = {
 To run the report, run:
 
 ```
-report = Differential.calculate(week1_data, week2_data, reader_config)
+report = Differential.calculate(dataset_a: week1_data, dataset_b: week2_data, reader_config: reader_config)
 ```
 
 The report variable will now hold a Report object with the following methods:
@@ -149,7 +149,7 @@ reader_config = {
 Then execute:
 
 ```
-report = Differential.calculate(week1_data, week2_data, reader_config)
+report = Differential.calculate(dataset_a: week1_data, dataset_b: week2_data, reader_config: reader_config)
 ```
 
 ### By Employee, Grouped By Transport Type Report
@@ -167,7 +167,7 @@ reader_config = {
 Then execute:
 
 ```
-report = Differential.calculate(week1_data, week2_data, reader_config)
+report = Differential.calculate(dataset_a: week1_data, dataset_b: week2_data, reader_config: reader_config)
 ```
 
 Now, this will output a report with two groups instead of one which will allow you to present this with sub-totals.
