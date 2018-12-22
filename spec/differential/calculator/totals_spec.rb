@@ -15,26 +15,34 @@ describe ::Differential::Calculator::Totals do
 
     totals.add(300, ::Differential::Calculator::Side::A)
 
-    expect(totals.a_sigma).to eq(300)
-    expect(totals.b_sigma).to eq(0)
-    expect(totals.delta).to   eq(-300)
+    expect(totals.a_sigma).to     eq(300)
+    expect(totals.a_size).to      eq(1)
+    expect(totals.b_sigma).to     eq(0)
+    expect(totals.b_size).to      eq(0)
+    expect(totals.delta).to       eq(-300)
 
     totals.add(400, ::Differential::Calculator::Side::B)
 
     expect(totals.a_sigma).to eq(300)
+    expect(totals.a_size).to  eq(1)
     expect(totals.b_sigma).to eq(400)
+    expect(totals.b_size).to  eq(1)
     expect(totals.delta).to   eq(100)
 
     totals.add(2.5, ::Differential::Calculator::Side::A)
 
     expect(totals.a_sigma).to eq(302.5)
+    expect(totals.a_size).to  eq(2)
     expect(totals.b_sigma).to eq(400)
+    expect(totals.b_size).to  eq(1)
     expect(totals.delta).to   eq(97.5)
 
     totals.add(2.50, ::Differential::Calculator::Side::B)
 
     expect(totals.a_sigma).to eq(302.5)
+    expect(totals.a_size).to  eq(2)
     expect(totals.b_sigma).to eq(402.5)
+    expect(totals.b_size).to  eq(2)
     expect(totals.delta).to   eq(100)
   end
 end

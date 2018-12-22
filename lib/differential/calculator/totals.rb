@@ -16,11 +16,13 @@ module Differential
     class Totals
       include ::Differential::Calculator::Side
 
-      attr_reader :a_sigma, :b_sigma
+      attr_reader :a_sigma, :b_sigma, :a_size, :b_size
 
       def initialize
         @a_sigma = 0
         @b_sigma = 0
+        @a_size  = 0
+        @b_size  = 0
       end
 
       def delta
@@ -28,6 +30,13 @@ module Differential
       end
 
       def add(value, side)
+        increment_sigma(value, side)
+        increment_size(side)
+      end
+
+      private
+
+      def increment_sigma(value, side)
         case side
         when A
           @a_sigma += value
@@ -37,7 +46,20 @@ module Differential
           raise ArgumentError, "unknown side: #{side}"
         end
 
-        self
+        nil
+      end
+
+      def increment_size(side)
+        case side
+        when A
+          @a_size += 1.0
+        when B
+          @b_size += 1.0
+        else
+          raise ArgumentError, "unknown side: #{side}"
+        end
+
+        nil
       end
     end
   end
