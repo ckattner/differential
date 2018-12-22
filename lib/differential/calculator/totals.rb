@@ -16,12 +16,15 @@ module Differential
     class Totals
       include ::Differential::Calculator::Side
 
-      attr_reader :a_sigma, :b_sigma, :a_size, :b_size
+      attr_reader :a_sigma,
+                  :a_size,
+                  :b_sigma,
+                  :b_size
 
       def initialize
         @a_sigma = 0
-        @b_sigma = 0
         @a_size  = 0
+        @b_sigma = 0
         @b_size  = 0
       end
 

@@ -15,8 +15,8 @@ module Differential
       attr_reader :id, :group_id, :value, :data
 
       def initialize(id:, group_id:, value:, data:)
-        @id       = id
-        @group_id = group_id
+        @id       = ::Differential::Parser::Id.new(id)
+        @group_id = ::Differential::Parser::Id.new(group_id)
         @value    = value
         @data     = data
       end

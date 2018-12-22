@@ -44,12 +44,13 @@ module Differential
       private
 
       def upsert_item(record, side)
-        item_id = record.id
+        item_id_key = record.id.value
+        item_id     = record.id
 
         # Create a new item if one does not exist
-        items_by_id[item_id] = Item.new(item_id) unless items_by_id.key?(item_id)
+        items_by_id[item_id_key] = Item.new(item_id) unless items_by_id.key?(item_id_key)
 
-        items_by_id[item_id].add(record, side)
+        items_by_id[item_id_key].add(record, side)
 
         nil
       end

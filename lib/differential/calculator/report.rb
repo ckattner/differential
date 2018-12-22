@@ -36,12 +36,13 @@ module Differential
       private
 
       def upsert_group(record, side)
-        group_id = record.group_id
+        group_id_key  = record.group_id.value
+        group_id      = record.group_id
 
         # Create a new group if one does not exist
-        groups_by_id[group_id] = Group.new(group_id) unless groups_by_id.key?(group_id)
+        groups_by_id[group_id_key] = Group.new(group_id) unless groups_by_id.key?(group_id_key)
 
-        groups_by_id[group_id].add(record, side)
+        groups_by_id[group_id_key].add(record, side)
 
         nil
       end

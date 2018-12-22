@@ -16,14 +16,16 @@ module Differential
       include ::Differential::Calculator::HasTotals
       include ::Differential::Calculator::Side
 
-      attr_reader :id, :a_records, :b_records
+      attr_reader :a_records,
+                  :b_records,
+                  :id
 
       def initialize(id)
         raise ArgumentError, 'id is required' unless id
 
-        @id         = id
         @a_records  = []
         @b_records  = []
+        @id         = id
       end
 
       def add(record, side)
