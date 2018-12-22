@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    differential (1.0.3)
+    differential (1.0.4)
 
 GEM
   remote: https://rubygems.org/
