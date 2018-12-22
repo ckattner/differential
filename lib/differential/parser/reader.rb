@@ -56,11 +56,11 @@ module Differential
       end
 
       def make_record_id(hash)
-        record_id_key_array.map { |k| hash[k] }.join(':')
+        record_id_key_array.map { |k| hash[k] }
       end
 
       def make_group_id(hash)
-        group_id_key_array.map { |k| hash[k] }.join(':')
+        group_id_key_array.map { |k| hash[k] }
       end
 
       def record_id_key_array

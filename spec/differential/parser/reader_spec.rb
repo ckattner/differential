@@ -150,6 +150,7 @@ describe ::Differential::Parser::Reader do
       hash = hashes.first
 
       expect(record.id).to        eq("#{hash[:first]}:#{hash[:last]}")
+      expect(record.id.data).to   eq([hash[:first], hash[:last]])
       expect(record.group_id).to  eq("#{hash[:transport]}:#{hash[:direction]}")
       expect(record.value).to     eq(hash[:minutes])
       expect(record.data).to      eq(hash)
