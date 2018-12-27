@@ -25,7 +25,7 @@ module Differential
 
         @a_records  = []
         @b_records  = []
-        @id         = id
+        @id         = id.is_a?(::Differential::Parser::Id) ? id : ::Differential::Parser::Id.new(id)
       end
 
       def add(record, side)

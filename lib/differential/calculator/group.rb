@@ -22,7 +22,11 @@ module Differential
       def initialize(id)
         raise ArgumentError, 'id is required' unless id
 
-        @id = id
+        @id = id.is_a?(::Differential::Parser::Id) ? id : ::Differential::Parser::Id.new(id)
+      end
+
+      def sorted_items
+        items.sort_by { |item| item.id.value }
       end
 
       def items

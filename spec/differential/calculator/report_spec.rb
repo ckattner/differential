@@ -134,4 +134,30 @@ describe ::Differential::Calculator::Report do
       expect(group2_item2.delta).to eq(group_2_minus2.value)
     end
   end
+
+  it '#sorted_groups should be lexicographically sorted' do
+    report = ::Differential::Calculator::Report.new
+
+    unsorted_ids = [
+      'zYx',
+      '123',
+      'aBC',
+      '1 AC.'
+    ]
+
+    unsorted_ids.each do |unsorted_id|
+      record = ::Differential::Parser::Record.new(id:       '1',
+                                                  group_id: unsorted_id,
+                                                  value:    1,
+                                                  data:     {})
+
+      report.add(record, ::Differential::Calculator::Side::A)
+    end
+
+    actual_ids = report.sorted_groups.map { |i| i.id.value }
+
+    expected_ids = unsorted_ids.sort
+
+    expect(actual_ids).to eq(expected_ids)
+  end
 end

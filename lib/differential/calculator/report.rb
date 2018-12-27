@@ -18,6 +18,10 @@ module Differential
     class Report
       include HasTotals
 
+      def sorted_groups
+        groups.sort_by { |group| group.id.value }
+      end
+
       def groups
         groups_by_id.values
       end

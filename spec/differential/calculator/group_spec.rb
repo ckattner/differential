@@ -10,11 +10,35 @@
 require './spec/spec_helper'
 
 describe ::Differential::Calculator::Group do
-  let(:id) { 'matt' }
+  let(:group_id) { 'matt' }
 
-  let(:group) { ::Differential::Calculator::Group.new(id) }
+  let(:group) { ::Differential::Calculator::Group.new(group_id) }
 
   it 'should initialize correctly' do
-    expect(group.id).to eq(id)
+    expect(group.id).to eq(group_id)
+  end
+
+  it '#sorted_items should be lexicographically sorted' do
+    unsorted_ids = [
+      'zYx',
+      '123',
+      'aBC',
+      '1 AC.'
+    ]
+
+    unsorted_ids.each do |unsorted_id|
+      record = ::Differential::Parser::Record.new(id:       unsorted_id,
+                                                  group_id: group_id,
+                                                  value:    1,
+                                                  data:     {})
+
+      group.add(record, ::Differential::Calculator::Side::A)
+    end
+
+    actual_ids = group.sorted_items.map { |i| i.id.value }
+
+    expected_ids = unsorted_ids.sort
+
+    expect(actual_ids).to eq(expected_ids)
   end
 end
