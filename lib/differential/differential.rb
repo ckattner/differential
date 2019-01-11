@@ -8,6 +8,7 @@
 #
 
 require 'forwardable'
+require 'bigdecimal'
 
 require_relative 'calculator/calculator'
 require_relative 'parser/parser'

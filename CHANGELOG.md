@@ -1,6 +1,7 @@
 ## 1.0.6 (January 11, 2019)
 
-- Added Data Peeking for groups and items (group#data_peek, item#data_peek methods)
+- Added Data Peeking for groups and items (group#data_peek, item#data_peek methods).
+- Changed precision of Totals a_sigma, b_sigma, and delta to be BigDecimal with precision of 6.
 
 ## 1.0.5 (January 11, 2019)
 

@@ -184,7 +184,33 @@ reader_config = {
 }
 ```
 
-In this example we are showing that a unique identifier for an employee is not just the employee's ID, but also the companies ID.  The above configuration would output a dataset that is grouped by transport type and direction (i.e. Outbound Train, Inbound Train, Outbound Car, etc...) and lists each unique employee per company in each group.  
+In this example we are showing that a unique identifier for an employee is not just the employee's ID, but also the companies ID.  The above configuration would output a dataset that is grouped by transport type and direction (i.e. Outbound Train, Inbound Train, Outbound Car, etc...) and lists each unique employee per company in each group.
+
+### Data Peeking
+
+*Raw data* is defined as the initial dataset(s) passed into Differential#calculate.  The consumer application defines this raw data and what Differential does is parses, interprets, and pivots it based on the configuration sent in.  By the time Differential is complete you will end up with a completely different result set than initially passed in.  This does not mean you cannot trace back the raw data.
+
+You still have access to the raw data after the data has been consumed and calculated within a report.  An example of accessing this on a specific item would be:
+
+````
+item.data_peek(:name)
+````
+
+In the above example, the item would the first record added (precedence to side A, then B) and execute the field on the record's data value.  If the data value is a hash, it will send it through the brackets [] method, if the data value is an object, it will check to see if it responds to field and call it if it can.
+
+If you want to only check one side, you can also specify the side:
+
+````
+item.data_peek(:name, ::Differential::Calculator::Side::A) # item.data_peek(:name, :a)
+item.data_peek(:name, ::Differential::Calculator::Side::B) # item.data_peek(:name, :b)
+````
+
+Data peeking also works at the group level, where it will look at the first item added:
+
+````
+group.data_peek(:name)
+````
+
 
 ## Contributing
 

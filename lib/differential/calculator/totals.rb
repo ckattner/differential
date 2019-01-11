@@ -16,15 +16,17 @@ module Differential
     class Totals
       include ::Differential::Calculator::Side
 
+      DIGITS = 6
+
       attr_reader :a_sigma,
                   :a_size,
                   :b_sigma,
                   :b_size
 
       def initialize
-        @a_sigma = 0
+        @a_sigma = BigDecimal(0, DIGITS)
         @a_size  = 0
-        @b_sigma = 0
+        @b_sigma = BigDecimal(0, DIGITS)
         @b_size  = 0
       end
 
