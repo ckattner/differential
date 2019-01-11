@@ -1,6 +1,10 @@
-## 1.0.5 (January 11, 2019)
+## 1.0.6 (January 11, 2019)
 
 - Added Data Peeking for groups and items (group#data_peek, item#data_peek methods)
+
+## 1.0.5 (January 11, 2019)
+
+- Added lexicographic ID sorting (report#sorted_groups and group#sorted_items methods.)
 
 ## 1.0.4 (December 21, 2018)
 
