@@ -45,7 +45,16 @@ module Differential
         self
       end
 
+      def data_peek(field, side = nil)
+        first_item&.data_peek(field, side)
+      end
+
       private
+
+      def first_item
+        # first() will return an array: [key, value], but we just want the value.
+        @items_by_id.first&.last
+      end
 
       def upsert_item(record, side)
         item_id_key = record.id.value

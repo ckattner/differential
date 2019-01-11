@@ -40,7 +40,29 @@ module Differential
         self
       end
 
+      def data_peek(field, side = nil)
+        data_object = record_peek(side)&.data
+
+        return nil unless data_object
+
+        if data_object.respond_to?(field)
+          data_object.send(field)
+        elsif data_object.respond_to?(:[])
+          data_object[field]
+        end
+      end
+
       private
+
+      def record_peek(side)
+        if [nil, A].include?(side) && a_records.any?
+          a_records
+        elsif [nil, B].include?(side) && b_records.any?
+          b_records
+        else
+          []
+        end.first
+      end
 
       def account_for_record(record, side)
         case side
