@@ -1,3 +1,7 @@
+## 1.0.5 (January 11, 2019)
+
+- Added Data Peeking for groups and items (group#data_peek, item#data_peek methods)
+
 ## 1.0.4 (December 21, 2018)
 
 - Adjusted reader so it stores multipart ID's properly in the ID's data field.
