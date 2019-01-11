@@ -41,4 +41,15 @@ describe ::Differential::Calculator::Group do
 
     expect(actual_ids).to eq(expected_ids)
   end
+
+  it 'should peek at data based on first item it finds' do
+    record = ::Differential::Parser::Record.new(id:       '1',
+                                                group_id: group_id,
+                                                value:    1,
+                                                data:     { name: 'Millie' })
+
+    group.add(record, ::Differential::Calculator::Side::A)
+
+    expect(group.data_peek(:name)).to eq(record.data[:name])
+  end
 end
