@@ -27,10 +27,10 @@ describe ::Differential::Calculator::Group do
     ]
 
     unsorted_ids.each do |unsorted_id|
-      record = ::Differential::Parser::Record.new(id:       unsorted_id,
+      record = ::Differential::Parser::Record.new(id: unsorted_id,
                                                   group_id: group_id,
-                                                  value:    1,
-                                                  data:     {})
+                                                  value: 1,
+                                                  data: {})
 
       group.add(record, ::Differential::Calculator::Side::A)
     end
@@ -43,10 +43,10 @@ describe ::Differential::Calculator::Group do
   end
 
   it 'should peek at data based on first item it finds' do
-    record = ::Differential::Parser::Record.new(id:       '1',
+    record = ::Differential::Parser::Record.new(id: '1',
                                                 group_id: group_id,
-                                                value:    1,
-                                                data:     { name: 'Millie' })
+                                                value: 1,
+                                                data: { name: 'Millie' })
 
     group.add(record, ::Differential::Calculator::Side::A)
 

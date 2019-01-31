@@ -146,10 +146,10 @@ describe ::Differential::Calculator::Report do
     ]
 
     unsorted_ids.each do |unsorted_id|
-      record = ::Differential::Parser::Record.new(id:       '1',
+      record = ::Differential::Parser::Record.new(id: '1',
                                                   group_id: unsorted_id,
-                                                  value:    1,
-                                                  data:     {})
+                                                  value: 1,
+                                                  data: {})
 
       report.add(record, ::Differential::Calculator::Side::A)
     end

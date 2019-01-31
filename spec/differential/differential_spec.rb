@@ -20,14 +20,14 @@ describe ::Differential do
     ]
 
     reader_config = {
-      record_id_key:  :name,
-      value_key:      :minutes,
-      group_id_key:   :transport
+      record_id_key: :name,
+      value_key: :minutes,
+      group_id_key: :transport
     }
 
-    report = ::Differential.calculate(dataset_a:      dataset_a,
-                                      dataset_b:      dataset_b,
-                                      reader_config:  reader_config)
+    report = ::Differential.calculate(dataset_a: dataset_a,
+                                      dataset_b: dataset_b,
+                                      reader_config: reader_config)
 
     expect(report.groups.length).to eq(2)
   end

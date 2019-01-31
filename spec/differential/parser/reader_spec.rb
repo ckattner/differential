@@ -12,9 +12,9 @@ require './spec/spec_helper'
 describe ::Differential::Parser::Reader do
   it 'should initialize correctly' do
     hash = {
-      record_id_key:  :name,
-      value_key:      :minutes,
-      group_id_key:   :transport
+      record_id_key: :name,
+      value_key: :minutes,
+      group_id_key: :transport
     }
 
     reader = ::Differential::Parser::Reader.new(hash)
@@ -26,8 +26,8 @@ describe ::Differential::Parser::Reader do
 
   context 'When reading just id and value' do
     it 'should properly create a record from a hash' do
-      reader = ::Differential::Parser::Reader.new(record_id_key:  :name,
-                                                  value_key:      :minutes)
+      reader = ::Differential::Parser::Reader.new(record_id_key: :name,
+                                                  value_key: :minutes)
 
       hashes = [
         {
@@ -51,8 +51,8 @@ describe ::Differential::Parser::Reader do
     end
 
     it 'should skip null records' do
-      reader = ::Differential::Parser::Reader.new(record_id_key:  :name,
-                                                  value_key:      :minutes)
+      reader = ::Differential::Parser::Reader.new(record_id_key: :name,
+                                                  value_key: :minutes)
 
       hashes = [nil]
 
@@ -66,8 +66,8 @@ describe ::Differential::Parser::Reader do
   end
 
   it 'should read non-array input' do
-    reader = ::Differential::Parser::Reader.new(record_id_key:  :name,
-                                                value_key:      :minutes)
+    reader = ::Differential::Parser::Reader.new(record_id_key: :name,
+                                                value_key: :minutes)
 
     hashes = {
       name: 'Matt',
@@ -83,8 +83,8 @@ describe ::Differential::Parser::Reader do
   end
 
   it 'should read null input' do
-    reader = ::Differential::Parser::Reader.new(record_id_key:  :name,
-                                                value_key:      :minutes)
+    reader = ::Differential::Parser::Reader.new(record_id_key: :name,
+                                                value_key: :minutes)
 
     hashes = nil
 
@@ -98,8 +98,8 @@ describe ::Differential::Parser::Reader do
 
   context 'When reading singular keys' do
     it 'should properly create a record from a hash' do
-      reader = ::Differential::Parser::Reader.new(record_id_key:  :name,
-                                                  value_key:      :minutes,
+      reader = ::Differential::Parser::Reader.new(record_id_key: :name,
+                                                  value_key: :minutes,
                                                   group_id_key: :transport)
 
       hashes = [
@@ -127,9 +127,9 @@ describe ::Differential::Parser::Reader do
 
   context 'When reading multiple id keys' do
     it 'should properly create a record from a hash' do
-      reader = ::Differential::Parser::Reader.new(record_id_key:  %i[first last],
-                                                  value_key:      :minutes,
-                                                  group_id_key:   %i[transport direction])
+      reader = ::Differential::Parser::Reader.new(record_id_key: %i[first last],
+                                                  value_key: :minutes,
+                                                  group_id_key: %i[transport direction])
 
       hashes = [
         {

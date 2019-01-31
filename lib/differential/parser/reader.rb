@@ -49,10 +49,10 @@ module Differential
         group_id  = make_group_id(hash)
         value     = hash[value_key]
 
-        ::Differential::Parser::Record.new(id:        id,
-                                           group_id:  group_id,
-                                           value:     value,
-                                           data:      hash)
+        ::Differential::Parser::Record.new(id: id,
+                                           group_id: group_id,
+                                           value: value,
+                                           data: hash)
       end
 
       def make_record_id(hash)
@@ -74,8 +74,12 @@ module Differential
       def array(hashes)
         if hashes.is_a?(Hash)
           [hashes]
-        else
+        # If the consumer passed in a value that responds to each (is enumerable-like) then
+        # we can accept that as is.
+        elsif !hashes.respond_to?(:each)
           Array(hashes)
+        else
+          hashes
         end
       end
     end

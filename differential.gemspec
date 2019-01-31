@@ -21,9 +21,9 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/bluemarblepayroll/differential'
   s.license     = 'MIT'
 
-  s.required_ruby_version = '>= 2.3.1'
+  s.required_ruby_version = '>= 2.3.8'
 
   s.add_development_dependency('guard-rspec', '~>4.7')
   s.add_development_dependency('rspec', '~> 3.8')
-  s.add_development_dependency('rubocop', '~> 0.59')
+  s.add_development_dependency('rubocop', '~>0.63.1')
 end

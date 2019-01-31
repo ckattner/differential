@@ -1,3 +1,12 @@
+## 1.1.0 (January 31, 2019)
+
+Maintenance Update + 1 Enhancement
+
+* Ruby to min version 2.3.8
+* Updated Rubocop
+* Updated README
+* Minor performance optimization: Allow input to be a reader (responds to #each.)
+
 ## 1.0.6 (January 11, 2019)
 
 - Added Data Peeking for groups and items (group#data_peek, item#data_peek methods).

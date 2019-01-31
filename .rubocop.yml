@@ -3,3 +3,6 @@ Metrics/LineLength:
 
 Metrics/BlockLength:
   ExcludedMethods: ['it', 'describe', 'context']
+
+AllCops:
+  TargetRubyVersion: 2.3
