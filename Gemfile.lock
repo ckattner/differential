@@ -95,8 +95,8 @@ DEPENDENCIES
   guard-rspec (~> 4.7)
   rspec (~> 3.8)
   rubocop (~> 0.63.1)
-  simplecov
-  simplecov-console
+  simplecov (~> 0.16.1)
+  simplecov-console (~> 0.4.2)
 
 BUNDLED WITH
    1.17.2
