@@ -31,19 +31,6 @@ module Differential
         @group_id_key   = group_id_key
       end
 
-      def each(hashes)
-        return enum_for(:each) unless block_given?
-
-        array(hashes).each do |hash|
-          next unless hash
-
-          record = read(hash)
-          yield record
-        end
-      end
-
-      private
-
       def read(hash)
         id        = make_record_id(hash)
         group_id  = make_group_id(hash)
@@ -54,6 +41,8 @@ module Differential
                                            value: value,
                                            data: hash)
       end
+
+      private
 
       def make_record_id(hash)
         record_id_key_array.map { |k| hash[k] }

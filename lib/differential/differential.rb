@@ -23,8 +23,8 @@ module Differential
       reader = ::Differential::Parser::Reader.new(reader_config)
       report = ::Differential::Calculator::Report.new
 
-      reader.each(dataset_a) { |record| report.add(record, A) }
-      reader.each(dataset_b) { |record| report.add(record, B) }
+      dataset_a.each { |hash| report.add(reader.read(hash), A) }
+      dataset_b.each { |hash| report.add(reader.read(hash), B) }
 
       report
     end

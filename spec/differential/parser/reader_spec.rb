@@ -29,71 +29,18 @@ describe ::Differential::Parser::Reader do
       reader = ::Differential::Parser::Reader.new(record_id_key: :name,
                                                   value_key: :minutes)
 
-      hashes = [
-        {
-          name: 'Matt',
-          minutes: 34
-        }
-      ]
+      hash = {
+        name: 'Matt',
+        minutes: 34
+      }
 
-      records = []
-      reader.each(hashes) do |record|
-        records << record
-      end
-
-      record = records.first
-      hash = hashes.first
+      record = reader.read(hash)
 
       expect(record.id).to        eq(hash[:name])
       expect(record.group_id).to  eq('')
       expect(record.value).to     eq(hash[:minutes])
       expect(record.data).to      eq(hash)
     end
-
-    it 'should skip null records' do
-      reader = ::Differential::Parser::Reader.new(record_id_key: :name,
-                                                  value_key: :minutes)
-
-      hashes = [nil]
-
-      records = []
-      reader.each(hashes) do |record|
-        records << record
-      end
-
-      expect(records.length).to eq(0)
-    end
-  end
-
-  it 'should read non-array input' do
-    reader = ::Differential::Parser::Reader.new(record_id_key: :name,
-                                                value_key: :minutes)
-
-    hashes = {
-      name: 'Matt',
-      minutes: 34
-    }
-
-    records = []
-    reader.each(hashes) do |record|
-      records << record
-    end
-
-    expect(records.length).to eq(1)
-  end
-
-  it 'should read null input' do
-    reader = ::Differential::Parser::Reader.new(record_id_key: :name,
-                                                value_key: :minutes)
-
-    hashes = nil
-
-    records = []
-    reader.each(hashes) do |record|
-      records << record
-    end
-
-    expect(records.length).to eq(0)
   end
 
   context 'When reading singular keys' do
@@ -102,21 +49,13 @@ describe ::Differential::Parser::Reader do
                                                   value_key: :minutes,
                                                   group_id_key: :transport)
 
-      hashes = [
-        {
+      hash ={
           name: 'Matt',
           minutes: 34,
           transport: 'Train'
         }
-      ]
 
-      records = []
-      reader.each(hashes) do |record|
-        records << record
-      end
-
-      record = records.first
-      hash = hashes.first
+      record = reader.read(hash)
 
       expect(record.id).to        eq(hash[:name])
       expect(record.group_id).to  eq(hash[:transport])
@@ -131,23 +70,15 @@ describe ::Differential::Parser::Reader do
                                                   value_key: :minutes,
                                                   group_id_key: %i[transport direction])
 
-      hashes = [
-        {
-          first: 'Matt',
-          last: 'Smith',
-          minutes: 34,
-          transport: 'Train',
-          direction: 'Outbound'
-        }
-      ]
+      hash = {
+        first: 'Matt',
+        last: 'Smith',
+        minutes: 34,
+        transport: 'Train',
+        direction: 'Outbound'
+      }
 
-      records = []
-      reader.each(hashes) do |record|
-        records << record
-      end
-
-      record = records.first
-      hash = hashes.first
+      record = reader.read(hash)
 
       expect(record.id).to        eq("#{hash[:first]}:#{hash[:last]}")
       expect(record.id.data).to   eq([hash[:first], hash[:last]])
