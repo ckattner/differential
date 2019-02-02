@@ -49,11 +49,11 @@ describe ::Differential::Parser::Reader do
                                                   value_key: :minutes,
                                                   group_id_key: :transport)
 
-      hash ={
-          name: 'Matt',
-          minutes: 34,
-          transport: 'Train'
-        }
+      hash = {
+        name: 'Matt',
+        minutes: 34,
+        transport: 'Train'
+      }
 
       record = reader.read(hash)
 
