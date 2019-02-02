@@ -1,6 +1,6 @@
 # Differential
 
-[![Build Status](https://travis-ci.org/bluemarblepayroll/differential.svg?branch=master)](https://travis-ci.org/bluemarblepayroll/differential) <a href="https://codeclimate.com/github/bluemarblepayroll/differential/maintainability"><img src="https://api.codeclimate.com/v1/badges/6874556c14fe97ce898e/maintainability" /></a> <a href="https://codeclimate.com/github/bluemarblepayroll/differential/test_coverage"><img src="https://api.codeclimate.com/v1/badges/6874556c14fe97ce898e/test_coverage" /></a>
+[![Gem Version](https://badge.fury.io/rb/differential.svg)](https://badge.fury.io/rb/differential) [![Build Status](https://travis-ci.org/bluemarblepayroll/differential.svg?branch=master)](https://travis-ci.org/bluemarblepayroll/differential) [![Maintainability](https://api.codeclimate.com/v1/badges/6874556c14fe97ce898e/maintainability)](https://codeclimate.com/github/bluemarblepayroll/differential/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/6874556c14fe97ce898e/test_coverage)](https://codeclimate.com/github/bluemarblepayroll/differential/test_coverage)
 
 Have you ever had two numerical-based data sets of mostly the same data and you wanted to see the summations and deltas of each data set at the report, group, and line level?  Look no further!  Differential allows you to pass in two data sets and it will calculate all that for you.
 
