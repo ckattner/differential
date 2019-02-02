@@ -36,10 +36,12 @@ module Differential
         group_id  = make_group_id(hash)
         value     = hash[value_key]
 
-        ::Differential::Parser::Record.new(id: id,
-                                           group_id: group_id,
-                                           value: value,
-                                           data: hash)
+        ::Differential::Parser::Record.new(
+          id: id,
+          group_id: group_id,
+          value: value,
+          data: hash
+        )
       end
 
       private
